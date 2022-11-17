@@ -1,0 +1,6 @@
+NVidia Titan, 6, 836, 999
+AMD Radeon RX 570, 4, 1168, 200
+NVidia GeForce 1080ti, 11, 1481, 699
+NVidia RTX 2080ti, 11, 1350, 999
+AMD Radeon RX 6900XT, 16, 1825, 1000
+NVidia GeForce RTX 3080ti, 12, 1365, 1119
