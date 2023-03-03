@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Pizza Basics</title>
+  <link rel="stylesheet" type="text/css" href="../CSS/cookingStyles.css">
+  <link rel="icon" type="image/png" href="../icon.png">
+  <script src="../MainScript.js"></script>
+</head>
+<body>
+
+<header>
+  <h1 class="Title">Cooking for Students</h1>
+  <img class="imageBanner" src="../images/cookingBanner.jpg">
+</header>
+
+<!-- Navigation Bar -->
+<nav>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="./italian.html"> Italian</a></li>
+    <li><a href="./indian.html"> Indian</a></li>
+    <li><a href="./chinese.html"> Chinese</a></li>
+    <li><a href="./thai.html"> Thai </a></li>
+    <li><a href="./survey.html"> Survey</a></li>
+  </ul>
+</nav>
+
+<section><h2>How to make a Pizza</h2></section>
+<br>
+<div style="float:left;width: 150px">
+  <section id="pizza1" style="display: none">
+    <img class="pizzaImage" src="../images/driedYeast.jpg">
+    <h4>1tbsp Dried Yeast</h4>
+    <img class="pizzaImage" src="../images/pinchOfSalt.jpg">
+    <h4>A pinch of Salt</h4>
+    <img class="pizzaImage" src="../images/flour.jpg">
+    <h4>180g Strong Plain<br>Flour</h4>
+    <img class="pizzaImage" src="../images/oliveOil.jpg">
+    <h4>1tbsp Olive Oil</h4>
+  </section>
+
+  <section id="pizza2" style="display: none">
+    <img class="pizzaImage" src="../images/mixingDough.jpg">
+    <h4>Mix the Dough</h4>
+    <img class="pizzaImage" src="../images/kneadingBread.jpg">
+    <h4>Knead the Dough</h4>
+  </section>
+
+  <section id="pizza3" style="display: none">
+    <img class="pizzaImage" src="../images/provingBefore.jpg">
+    <h4>Leave Bread to <br> Prove</h4>
+    <img class="pizzaImage" src="../images/provingAfter.jpg">
+    <h4>After Proving</h4>
+  </section>
+
+  <section id="pizza4" style="display: none">
+    <img class="pizzaImage" src="../images/pizzaBaseBefore.jpg">
+    <h4>Create Round Pizza<br>Base</h4>
+    <img class="pizzaImage" src="../images/pizzaBase.jpg">
+    <h4>Spread 2tbsp of <br>Tomato Puree</h4>
+  </section>
+
+  <section id="pizza5" style="display: none">
+    <img class="pizzaImage" src="../images/choppedTomatoes.jpg">
+    <h4>Tin Chopped <br>Tomatoes</h4>
+    <img class="pizzaImage" src="../images/choppedOnion.jpg">
+    <h4>One Chopped Onion</h4>
+    <img class="pizzaImage" src="../images/choppedGarlic.jpg">
+    <h4>2 Cloves Thinly <br>Sliced Garlic</h4>
+  </section>
+
+  <section id="pizza6" style="display: none">
+    <img class="pizzaImage" src="../images/mozzarellaCheese.jpg">
+    <h4>Chopped Mozarella</h4>
+    <img class="pizzaImage" src="../images/pepperoni.jpg">
+    <h4>About a Dozen <br>Slices of Pepperoni</h4>
+  </section>
+
+  <section id="pizza7" style="display: none">
+    <img class="pizzaImage" src="../images/saltPepper.jpg">
+    <h4>Season with Salt<br>and Pepper</h4>
+    <img class="pizzaImage" src="../images/basil.jpg">
+    <h4>A Small Handful <br>of Basil Leaves</h4>
+  </section>
+
+  <section id="pizza8" style="display: none">
+    <img class="pizzaImage" src="../images/pizzaOven.jpg">
+    <h4>Cooking Pizza</h4>
+  </section>
+
+</div>
+
+<div style="margin-left:10px; float: right; display: inline; width: 780px">
+  <h2>Click on an instruction below to see quantities.</h2>
+  <br>
+  <p>Making a Pepperoni Pizza.</p>
+  <br>
+  <p id="pizza1Text" onclick="displayPizza1()">Mix the salt and yeast together in the warm water. Place flour in a bowl, make a well in the centre and add the water mixture along with the oil. </p>
+  <br>
+  <p id="pizza2Text" onclick="displayPizza2()">Use a wooden spoon to mix everything until you have a wet ball of dough. Put on floured surface and knead for 5mins.</p>
+  <br>
+  <p id="pizza3Text" onclick="displayPizza3()">Place the dough in a greased bowl and cover with tea towel. Leave at room temperature to prove for 30mins.  The dough should double in size.</p>
+  <br>
+  <p id="pizza4Text" onclick="displayPizza4()">Shape the dough into a round pizza base and stab with a fork several times.  Spread with pizza toppings and tomato puree.</p>
+  <br>
+  <p id="pizza5Text" onclick="displayPizza5()">Add chopped tomatoes on top then add onion and garlic.</p>
+  <br>
+  <p id="pizza6Text" onclick="displayPizza6()">Sprinkle over cheese and arrange Pepperoni.</p>
+  <br>
+  <p id="pizza7Text" onclick="displayPizza7()">Season with salt and pepper and sprinkle on basil (1tsp dried basil may be used instead).</p>
+  <br>
+  <p id="pizza8Text" onclick="displayPizza8()">Place the pizza on oiled baking sheets. Cook at 250 degrees for 10mins.</p>
+  <br>
+</div>
+
+<footer>
+
+      <h3>Famous TV Chefs</h3>
+      <ul>
+
+        <li> <a href="https://www.gordonramsay.com/">Gordon Ramsay</a> </li>
+        <li> <a href="https://www.jamieoliver.com/">Jamie Oliver</a></li>
+        <li> <a href="https://www.maryberry.co.uk/">Mary Berry</a></li>
+      </ul>
+    </footer>
+
+  </body>
+</html>
