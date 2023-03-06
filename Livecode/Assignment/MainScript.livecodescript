@@ -1,12 +1,12 @@
 //Microsoft Visual Studio Code
 
 On mouseUp
-    GetArrayData attraction, category, visitors, daysOpen, height
-    FindMostLeastVisited visitors, MostVisited, LeastVisited,
+    GetArrayData attraction, category, visitors, daysOpen, attractionHeight
+    FindMostLeastVisited visitors, MostVisited, LeastVisited
     FindServiceNeeded category, attraction
 End mouseUp
 
-On GetArrayData @attraction, @category, @visitors, @daysOpen, @height
+On GetArrayData @attraction, @category, @visitors, @daysOpen, @attractionHeight
     Local Filepath, FileContents
     
     //Get Data from File
@@ -19,7 +19,7 @@ On GetArrayData @attraction, @category, @visitors, @daysOpen, @height
         put it into FileContents
         close file Filepath
     Else
-        Answer Please choose a file to continue.
+        Answer "Please choose a file to continue"
     End If
 
     //Put Data into Parallel arrays 
@@ -33,7 +33,7 @@ On GetArrayData @attraction, @category, @visitors, @daysOpen, @height
         put CurrentAttraction[2] into category[loop]
         put CurrentAttraction[3] into visitors[loop]
         put CurrentAttraction[4] into daysOpen[loop]
-        put CurrentAttraction[5] into height[loop]
+        put CurrentAttraction[5] into attractionHeight[loop]
     End Repeat
 End GetArrayData
 
@@ -42,8 +42,8 @@ On FindMostLeastVisited visitors
 
 // Call Functions to Find Most/Least Visited Attractions and send to display
 
-    Put FindMostVisited(visitors) after field "field"
-    Put FindLeastVisited(visitors) into after field "field"
+    Put FindMostVisited(visitors) after Field "Field"
+    Put FindLeastVisited(visitors) after Field "Field"
 End FindMostLeastVisited
 
 function FindLeastVisited visitors
@@ -76,35 +76,35 @@ function FindMostVisited visitors
     Return MostVisited
 end FindMostVisited
 
-On FindServiceNeeded attraction, DaysSinceService
-    
-//Declare Local Variables (Datatype not necessary in Livecode) and Intialisation
-
-    Local NeedsService
-    Repeat with loop = 1 to the number of elements in daysOpen
-        Put False into NeedsService
-    End Repeat
-
-    Repeat with loop = 1 to the number of elements in daysOpen
-        If category[loop] = "Roller Coaster"  then 
-            Put daysOpen%90 into DaysSinceService
-            If (90-DaysSinceService) <= 7 then
-                Put attraction[loop] into NeedsService[loop]
-            //Cannot write directly to file from loop,
+On FindServiceNeeded attraction, DaysOpen
+   
+   //Declare Local Variables (Datatype not necessary in Livecode) and Intialisation
+   
+   Local NeedsService, DaysSinceService
+   Repeat with loop = 1 to the number of elements in daysOpen
+      Put False into NeedsService
+   End Repeat
+   
+   Repeat with loop = 1 to the number of elements in daysOpen
+      If category[loop] = "Roller Coaster"  then 
+         Put (daysOpen[loop] mod 90) into DaysSinceService
+         If (90 - DaysSinceService) <= 7 then
+            Put attraction[loop] into NeedsService[loop]
+            //Cannot write directly to file from repeat,
             //Need to open file seperately so cannot 
             //exactly follow refinements
-            End If
-        End If
-    End Repeat
-
-//Create and write to services.csv
-
-    Open file C:/Users/willi/Documents/Assignment/services.csv for write
-    Write NeedsService to file  C:/Users/willi/Documents/Assignment/services.csv 
-    Close file C:/Users/willi/Documents/Assignment/services.csv
-
-    End FindServiceNeeded
+         End If
+      End If
+   End Repeat
+   
+   //Create and write to services.csv
+   
+   Open file "C:/Users/willi/Documents/Assignment/services.csv" for write
+   Write NeedsService to file  "C:/Users/willi/Documents/Assignment/services.csv" 
+   Close file "C:/Users/willi/Documents/Assignment/services.csv"
+   
+End FindServiceNeeded
     
-
-
-            
+    
+    
+    
