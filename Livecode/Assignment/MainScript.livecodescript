@@ -1,14 +1,13 @@
 //Microsoft Visual Studio Code
 
 On mouseUp
-    GetProcessData attraction, category, visitors, daysOpen, height
-    FindMostLeastVisited
-    FindServiceNeeded
+    GetArrayData attraction, category, visitors, daysOpen, height
+    ProcessData
     DisplayOutput
     FileOutput
 End mouseUp
 
-On GetProcessData @attraction, @category, @visitors, @daysOpen, @height
+On GetArrayData @attraction, @category, @visitors, @daysOpen, @height
     Local Filepath, FileContents
     
     //Get Data from File
@@ -37,6 +36,8 @@ On GetProcessData @attraction, @category, @visitors, @daysOpen, @height
         put CurrentAttraction[4] into daysOpen[loop]
         put CurrentAttraction[5] into height[loop]
     End Repeat
-       
+End GetArrayData
+
+
         
 
