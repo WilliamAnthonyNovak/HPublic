@@ -2,9 +2,8 @@
 
 On mouseUp
     GetArrayData attraction, category, visitors, daysOpen, height
-    ProcessData
-    DisplayOutput
-    FileOutput
+    FindMostLeastVisited visitors, MostVisited, LeastVisited,
+    FindServiceNeeded category, attraction
 End mouseUp
 
 On GetArrayData @attraction, @category, @visitors, @daysOpen, @height
@@ -39,5 +38,73 @@ On GetArrayData @attraction, @category, @visitors, @daysOpen, @height
 End GetArrayData
 
 
-        
+On FindMostLeastVisited visitors
 
+// Call Functions to Find Most/Least Visited Attractions and send to display
+
+    Put FindMostVisited(visitors) after field "field"
+    Put FindLeastVisited(visitors) into after field "field"
+End FindMostLeastVisited
+
+function FindLeastVisited visitors
+    
+    //Implementation of Find Min Position Standard Algorithm
+    
+    local leastVisited 
+    put 1 into leastVisited
+    Repeat with loop = 2 to the number of elements in visitors
+        If visitors[loop] < visitors[leastVisited] then
+            Put loop into leastVisited
+        End If
+    End Repeat
+
+    Return leastVisited
+end FindLeastVisited
+
+function FindMostVisited visitors
+    
+    //Implementation of Find Max Position Standard Algorithm
+    
+    local MostVisited 
+    put 1 into MostVisited
+    Repeat with loop = 2 to the number of elements in visitors
+        If visitors[loop] > visitors[MostVisited] then
+            Put loop into MostVisited
+        End If
+    End Repeat
+
+    Return MostVisited
+end FindMostVisited
+
+On FindServiceNeeded attraction, DaysSinceService
+    
+//Declare Local Variables (Datatype not necessary in Livecode) and Intialisation
+
+    Local NeedsService
+    Repeat with loop = 1 to the number of elements in daysOpen
+        Put False into NeedsService
+    End Repeat
+
+    Repeat with loop = 1 to the number of elements in daysOpen
+        If category[loop] = "Roller Coaster"  then 
+            Put daysOpen%90 into DaysSinceService
+            If (90-DaysSinceService) <= 7 then
+                Put attraction[loop] into NeedsService[loop]
+            //Cannot write directly to file from loop,
+            //Need to open file seperately so cannot 
+            //exactly follow refinements
+            End If
+        End If
+    End Repeat
+
+//Create and write to services.csv
+
+    Open file C:/Users/willi/Documents/Assignment/services.csv for write
+    Write NeedsService to file  C:/Users/willi/Documents/Assignment/services.csv 
+    Close file C:/Users/willi/Documents/Assignment/services.csv
+
+    End FindServiceNeeded
+    
+
+
+            
