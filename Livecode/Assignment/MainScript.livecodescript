@@ -40,15 +40,15 @@ End GetArrayData
 
 On FindMostLeastVisited visitors, attraction
    Local MostVisited, LeastVisited
-   // Call Functions to Find Most/Least Visited Attractions and send to display
+   // Call Functions to Find index positions of Most/Least Visited Attractions and send to display
    
-   Put FindMostVisited(visitors) into MostVisited
+   Put FindMostVisitedPos(visitors) into MostVisited
    Put "The most visited attraction is" && attraction[MostVisited] into line 1 of Field "Field"
-   Put FindLeastVisited(visitors)  into LeastVisited
+   Put FindLeastVisitedPos(visitors)  into LeastVisited
    Put "The least visited attraction is" && attraction[LeastVisited] into line 2 Field "Field"
 End FindMostLeastVisited
 
-function FindLeastVisited visitors
+function FindLeastVisitedPos visitors
     
     //Implementation of Find Min Position Standard Algorithm
     
@@ -61,9 +61,9 @@ function FindLeastVisited visitors
     End Repeat
 
     Return leastVisited
-end FindLeastVisited
+end FindLeastVisitedPos
 
-function FindMostVisited visitors
+function FindMostVisitedPos visitors
     
     //Implementation of Find Max Position Standard Algorithm
     
@@ -76,7 +76,7 @@ function FindMostVisited visitors
     End Repeat
 
     Return MostVisited
-end FindMostVisited
+end FindMostVisitedPos
 
 On FindServiceNeeded category, attraction, daysOpen
    
