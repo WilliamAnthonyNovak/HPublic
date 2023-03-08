@@ -2,8 +2,8 @@
 
 On mouseUp
     GetArrayData attraction, category, visitors, daysOpen, attractionHeight
-    FindMostLeastVisited visitors, MostVisited, LeastVisited
-    FindServiceNeeded category, attraction
+    FindMostLeastVisited visitors, attraction
+    FindServiceNeeded category, attraction, daysOpen
 End mouseUp
 
 On GetArrayData @attraction, @category, @visitors, @daysOpen, @attractionHeight
@@ -38,12 +38,14 @@ On GetArrayData @attraction, @category, @visitors, @daysOpen, @attractionHeight
 End GetArrayData
 
 
-On FindMostLeastVisited visitors
-
-// Call Functions to Find Most/Least Visited Attractions and send to display
-
-    Put FindMostVisited(visitors) after Field "Field"
-    Put FindLeastVisited(visitors) after Field "Field"
+On FindMostLeastVisited visitors, attraction
+   Local MostVisited, LeastVisited
+   // Call Functions to Find Most/Least Visited Attractions and send to display
+   
+   Put FindMostVisited(visitors) into MostVisited
+   Put "The most visited attraction is" && attraction[MostVisited] into line 1 of Field "Field"
+   Put FindLeastVisited(visitors)  into LeastVisited
+   Put "The least visited attraction is" && attraction[LeastVisited] into line 2 Field "Field"
 End FindMostLeastVisited
 
 function FindLeastVisited visitors
@@ -76,20 +78,24 @@ function FindMostVisited visitors
     Return MostVisited
 end FindMostVisited
 
-On FindServiceNeeded attraction, DaysOpen
+On FindServiceNeeded category, attraction, daysOpen
    
    //Declare Local Variables (Datatype not necessary in Livecode) and Intialisation
    
-   Local NeedsService, DaysSinceService
+   Local NeedsService, DaysSinceService, index
+   
+   Put 1 into index
+   
    Repeat with loop = 1 to the number of elements in daysOpen
-      Put False into NeedsService
+      Put "" into NeedsService[loop]
    End Repeat
    
    Repeat with loop = 1 to the number of elements in daysOpen
       If category[loop] = "Roller Coaster"  then 
          Put (daysOpen[loop] mod 90) into DaysSinceService
          If (90 - DaysSinceService) <= 7 then
-            Put attraction[loop] into NeedsService[loop]
+            Put attraction[loop] into line index of NeedsService
+            Put index + 1 into index
             //Cannot write directly to file from repeat,
             //Need to open file seperately so cannot 
             //exactly follow refinements
@@ -99,12 +105,8 @@ On FindServiceNeeded attraction, DaysOpen
    
    //Create and write to services.csv
    
-   Open file "C:/Users/willi/Documents/Assignment/services.csv" for write
-   Write NeedsService to file  "C:/Users/willi/Documents/Assignment/services.csv" 
-   Close file "C:/Users/willi/Documents/Assignment/services.csv"
+   Open file "C:\Users\willi\Documents\Assignment\services.csv" for write
+   Write NeedsService to file "C:\Users\willi\Documents\Assignment\services.csv"
+   Close file "C:\Users\willi\Documents\Assignment\services.csv"
    
 End FindServiceNeeded
-    
-    
-    
-    
