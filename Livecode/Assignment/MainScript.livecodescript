@@ -90,6 +90,8 @@ On FindServiceNeeded category, attraction, daysOpen
       Put "" into NeedsService[loop]
    End Repeat
    
+//Find which Roller Coasters require servicing within the next  7 days
+
    Repeat with loop = 1 to the number of elements in daysOpen
       If category[loop] = "Roller Coaster"  then 
          Put (daysOpen[loop] mod 90) into DaysSinceService
@@ -103,7 +105,7 @@ On FindServiceNeeded category, attraction, daysOpen
       End If
    End Repeat
    
-   //Create and write to services.csv
+   //Create and write to services.csv stored in  C:/Users /willi/Documents/Assignment/services.csv
    
    Open file "C:\Users\willi\Documents\Assignment\services.csv" for write
    Write NeedsService to file "C:\Users\willi\Documents\Assignment\services.csv"
