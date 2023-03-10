@@ -113,5 +113,3 @@ On FindServiceNeeded category, attraction, daysOpen
    Close file "C:\Users\willi\Documents\Assignment\services.csv"
    
 End FindServiceNeeded
-    
-    
