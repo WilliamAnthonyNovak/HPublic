@@ -1,5 +1,3 @@
-//Microsoft Visual Studio Code
-
 On mouseUp
     GetArrayData attraction, category, visitors, daysOpen, attractionHeight
     FindMostLeastVisited visitors, attraction
