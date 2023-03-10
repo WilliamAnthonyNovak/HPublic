@@ -22,7 +22,7 @@ On GetArrayData @attraction, @category, @visitors, @daysOpen, @attractionHeight
         Answer "Please choose a file to continue"
     End If
 
-    //Put Data into Parallel arrays 
+    //Split Data by line and comma and place into Parallel arrays 
     
     local CurrentAttraction
     Repeat with loop = 1 to the number of lines in FileContents
@@ -40,15 +40,15 @@ End GetArrayData
 
 On FindMostLeastVisited visitors, attraction
    Local MostVisited, LeastVisited
-   // Call Functions to Find index positions of Most/Least Visited Attractions and send to display
+   // Call Functions to Find Most/Least Visited Attractions and send to display
    
-   Put FindMostVisitedPos(visitors) into MostVisited
+   Put FindMostVisited(visitors) into MostVisited
    Put "The most visited attraction is" && attraction[MostVisited] into line 1 of Field "Field"
-   Put FindLeastVisitedPos(visitors)  into LeastVisited
+   Put FindLeastVisited(visitors)  into LeastVisited
    Put "The least visited attraction is" && attraction[LeastVisited] into line 2 Field "Field"
 End FindMostLeastVisited
 
-function FindLeastVisitedPos visitors
+function FindLeastVisited visitors
     
     //Implementation of Find Min Position Standard Algorithm
     
@@ -61,9 +61,9 @@ function FindLeastVisitedPos visitors
     End Repeat
 
     Return leastVisited
-end FindLeastVisitedPos
+end FindLeastVisited
 
-function FindMostVisitedPos visitors
+function FindMostVisited visitors
     
     //Implementation of Find Max Position Standard Algorithm
     
@@ -76,7 +76,7 @@ function FindMostVisitedPos visitors
     End Repeat
 
     Return MostVisited
-end FindMostVisitedPos
+end FindMostVisited
 
 On FindServiceNeeded category, attraction, daysOpen
    
@@ -90,8 +90,9 @@ On FindServiceNeeded category, attraction, daysOpen
       Put "" into NeedsService[loop]
    End Repeat
    
-//Find which Roller Coasters require servicing within the next  7 days
-
+   //Find which Roller Coasters Needs service within 7 days (90-(daysOpen mod 90))
+   //and prepare for the names to be written to services.csv
+   
    Repeat with loop = 1 to the number of elements in daysOpen
       If category[loop] = "Roller Coaster"  then 
          Put (daysOpen[loop] mod 90) into DaysSinceService
@@ -105,10 +106,12 @@ On FindServiceNeeded category, attraction, daysOpen
       End If
    End Repeat
    
-   //Create and write to services.csv stored in  C:/Users /willi/Documents/Assignment/services.csv
+   //Create and write to services.csv
    
    Open file "C:\Users\willi\Documents\Assignment\services.csv" for write
    Write NeedsService to file "C:\Users\willi\Documents\Assignment\services.csv"
    Close file "C:\Users\willi\Documents\Assignment\services.csv"
    
 End FindServiceNeeded
+    
+    
