@@ -1,0 +1,88 @@
+<html>
+
+	<head>
+		<title>Submit Review</title>
+		<link rel="stylesheet" type="text/css" href="../CSS/styles.css">
+	</head>
+
+	<body background="../Images/bg.jpg">
+
+		<header>
+			Planet Games
+		</header>
+
+		<div id="nav">
+		<nav>
+		  <ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="reviews.html">Reviews</a></li>
+			<li><a href="todaysNews.html">News</a></li>
+			<li><a href="submitReview.html">Submit Review</a></li>
+		  </ul>
+		</nav>
+		</div>
+		<br>
+
+
+
+    <main>
+			<h1>Complete the form to submit your own review </h1>
+			<p>Just played a game and can't wait to talk about it? We'd love to hear it!
+			Complete the form below and we'll check it out!</p>
+
+		<form action="ReviewSubmission">
+			<br>
+			<div class="SideBySideInput">
+				First Name*
+				<br>
+				<input type="text" name="forename" size="20" maxlength="15" required>
+			</div>
+			<div class="SideBySideInput">
+			Surname*
+			<br>
+			<input type="text" name="surname" size="20" maxlength="15" required>
+			</div>
+
+			<br>
+			<br>
+			<br>
+			Age*
+			<br>
+			<input type="radio" name="age" value="16-18" required> 16-18
+			<input type="radio" name="age" value="19-24" required> 19-24
+			<input type="radio" name="age" value="25-29" required> 25-29
+			<input type="radio" name="age" value="30+" required> 30+
+			<br>
+			<br>
+			<div class="SideBySideInput">
+			Genre Name*
+			<br>
+			<input type="text" name="genre" size="20" maxlength="20" required>
+			</div>
+			<div class="SideBySideInput">
+			Rating*
+			<br>
+			<input type="number" name="Rating" min="1" max="10" required>
+			</div>
+			<br>
+			<br>
+			<br>
+			Your Detailed Review*
+			<br>
+			<textarea name="review" rows="4" cols="50" required></textarea>
+			<br>
+			<br>
+			<input type="submit" onclick="alert('Form Entered')" value="Submit">
+		</form>
+
+
+			
+
+    </main>
+
+		<footer>
+			<p> Planet Games Inc. 2022 </p>
+
+		</footer>
+	</body>
+	</html>
