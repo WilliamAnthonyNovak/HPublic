@@ -122,7 +122,8 @@ On FindHeightRestriction attractionHeight
          put occurences + 1 into occurences
       end if
    end repeat
-   Put "The number of attractions with a height restriction of 1 meter or greater is" && occurences & "." into line 3 of field "Field"
+   Put "The number of attractions with a height restriction of 1 meter or greater is" && occurences & "." \
+   into line 3 of field "Field"
 end FindHeightRestriction
     
     
