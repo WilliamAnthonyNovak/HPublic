@@ -1,7 +1,10 @@
+//Microsoft Visual Studio Code
+
 On mouseUp
     GetArrayData attraction, category, visitors, daysOpen, attractionHeight
     FindMostLeastVisited visitors, attraction
     FindServiceNeeded category, attraction, daysOpen
+    FindHeightRestriction attractionHeight
 End mouseUp
 
 On GetArrayData @attraction, @category, @visitors, @daysOpen, @attractionHeight
@@ -111,3 +114,15 @@ On FindServiceNeeded category, attraction, daysOpen
    Close file "C:\Users\willi\Documents\Assignment\services.csv"
    
 End FindServiceNeeded
+
+On FindHeightRestriction attractionHeight
+   local occurences
+   repeat with loop = 1 to the number of elements in attractionHeight
+      if attractionHeight[loop] >= 1 then
+         put occurences + 1 into occurences
+      end if
+   end repeat
+   Put "The number of attractions with a height restriction of 1 meter or greater is" && occurences & "." into line 3 of field "Field"
+end FindHeightRestriction
+    
+    
